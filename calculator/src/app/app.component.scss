@@ -1,0 +1,73 @@
+$primary-color: skyblue;
+$secondary-color: #2196F3;
+
+.item1 { grid-area: header;}
+.item2 { grid-area: menu; }
+.item3 { grid-area: main; }
+.item4 { grid-area: right; }
+.item5 { grid-area: footer; }
+.item6 {grid-area: nine;}
+.item7 {grid-area: eight;}
+.item8 {grid-area: seven;}
+.item9 {grid-area: multiplication;}
+.item10 {grid-area: six;}
+.item11 {grid-area: five;}
+.item12 {grid-area: four;}
+.item13 {grid-area: minus;}
+.item14 {grid-area: three;}
+.item15 {grid-area: two;}
+.item16 {grid-area: one;}
+.item17 {grid-area: plus;}
+.item18 {grid-area: zero;}
+.item19 {grid-area: decim;}
+.item20 {grid-area: equal;}
+
+#output{
+  text-align: right;
+  width: 80%;
+  height: 80%;
+  font-size: larger;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: none;
+  background-color: $primary-color;
+}
+
+#summary{
+  font-size: medium;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: right;
+  padding-right: 20px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header'
+    'header header header header'
+    'menu main right footer'
+    'nine eight seven multiplication'
+    'six five four minus'
+    'three two one plus'
+    'zero decim equal equal';
+  grid-gap: 2px;
+  background-color:$secondary-color;
+  padding: 10px;
+  width: 300px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+
+.grid-container > div {
+  background-color: $primary-color;
+  text-align: center;
+  font-size: 30px;
+  height: 100%;
+}
+
+.single, .double{
+  height: 100%;
+  width: 100%;
+  border: none;
+  font-size: large;
+}
