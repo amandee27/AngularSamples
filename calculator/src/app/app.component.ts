@@ -7,33 +7,27 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'counter-app';
-  value:any="";
   sum:number=0;
-  currentNo:number=0;
-  sum2:number=0;
+  currentNo:string="0";
   sign:string="";
   readNoOutput:boolean=false;
-  decimal:number=0;
-  n:number=0;
-  decimalSign:string="";
 
   ngOnInit(){}
-  readNo(buttonValue :number){
-    
-    if(this.decimalSign==="."){
-      this.n=this.n+1;
-      this.currentNo=parseFloat((this.currentNo+buttonValue/(Math.pow(10, this.n))).toPrecision(15));
-      return;
+  readNo(buttonValue :string){
+    if(buttonValue==="0" && this.currentNo==="0"){
+      this.currentNo="0";
+    }else if(buttonValue!=="0" && this.currentNo==="0"){
+      this.currentNo=buttonValue;
+    }else{
+      this.currentNo=this.currentNo+buttonValue;
     }
-    this.currentNo=(this.currentNo*10)+buttonValue;
     this.readNoOutput=true;
-    this.n=0;
   }
 
   readSign(buttonValue:string){
     if(this.sign===""){
-      this.sum=this.currentNo;
-      this.currentNo=0;
+      this.sum=parseFloat(this.currentNo);
+      this.currentNo="0";
     }
     if(this.sign==="+"){
       this.add();
@@ -56,78 +50,49 @@ export class AppComponent {
     }
     this.sign=buttonValue;
     this.readNoOutput=false;
-    this.decimalSign="";
-  }
-
-  readDecimal(buttonValue:string){
-    this.decimalSign=buttonValue;  
   }
 
   readEqual(buttonValue:string){
   }
 
   backSpace(){
-    this.currentNo=Math.floor(this.currentNo/10);
+    this.currentNo=this.currentNo.slice(0, -1);
+    if(this.currentNo===""){
+      this.currentNo="0";
+    }
   }
   clear(){
     this.sum=0;
-    this.currentNo=0;
-    console.log(this.sum);
+    this.currentNo="0";
     this.sign="";
-    this.decimalSign="";
   }
 
   add(){
-    if(this.decimalSign==="."){
-      this.sum=this.sum +this.decimal;
-      this.currentNo=0;
-      this.value="";
-      this.decimalSign="";
-      return;
-    }
-    this.sum=this.sum + this.currentNo;
-    console.log(this.sum);
-    this.currentNo=0;
-    this.value="";
-    this.decimalSign="";
+    this.sum=this.sum + parseFloat(this.currentNo);
+    this.currentNo="0";
   }
 
   subtract(){
-    this.sum=this.sum-this.currentNo;
-    console.log(this.sum);
-    this.currentNo=0;
-    this.value="";
-    this.decimalSign="";
+    this.sum=this.sum-parseFloat(this.currentNo);
+    this.currentNo="0";
   }
 
   divide(){
-    this.sum=this.sum/this.currentNo;
+    this.sum=this.sum/parseFloat(this.currentNo);
     console.log(this.sum);
-    this.currentNo=0;
-    this.value="";
-    this.decimalSign="";
+    this.currentNo="0";
   }
 
   multiply(){
-    this.sum=this.sum*this.currentNo;
+    this.sum=this.sum*parseFloat(this.currentNo);
     console.log(this.sum);
-    this.currentNo=0;
-    this.value="";
-    this.decimalSign="";
+    this.currentNo="0";
   }
 
   modulus(){
-    this.sum=this.sum%this.currentNo;
+    this.sum=this.sum%parseFloat(this.currentNo);
     console.log(this.sum);
-    this.currentNo=0;
-    this.value="";
-    this.decimalSign="";
-  }
-  percentage(){
-    this.sum=(this.sum)+(this.currentNo/10)
-    this.currentNo=0;
-    this.value="";
-    this.decimalSign="";
+    this.currentNo="0";
   }
   
 }
