@@ -8,7 +8,11 @@
   <body>
     <div class="grid-container">
       <div class="item1">
-        <div id="summary">{{ sum }}{{ sign }}</div>
+        <div id="summary"><ng-template [ngIf]="equal" [ngIfElse]="none">
+          {{ sumOld }}{{ sign }}{{ currentNew }}{{equalSign}}
+        </ng-template>
+        <ng-template #none>{{ sum }}{{ sign }}</ng-template>
+      </div>
         <input
           type="text"
           id="output"
@@ -21,10 +25,10 @@
         <button class="single" (click)="clear()">C</button>
       </div>
       <div class="item3">
-        <button class="single" (click)="backSpace()">CE</button>
+        <button class="single" (click)="backSpace()">B</button>
       </div>
       <div class="item4">
-        <button class="single" (click)="readSign('%')">%</button>
+        <button class="single" (click)="presentageSign()">%</button>
       </div>
       <div class="item5">
         <button class="single" (click)="readSign('/')">/</button>
@@ -72,10 +76,15 @@
         <button class="single" (click)="readNo('.')">.</button>
       </div>
       <div class="item20">
-        <button class="double" (click)="readEqual('=')">=</button>
+        <button class="single" (click)="clearEqual()">CE</button>
+      </div>
+      <div class="item21">
+        <button class="single" (click)="readEqual('=')">=</button>
       </div>
     </div>
     {{currentNo}}
+    {{currentNew}}
+    {{equal}}
   </body>
 </html>
 

@@ -20,7 +20,19 @@ $secondary-color: #2196F3;
 .item17 {grid-area: plus;}
 .item18 {grid-area: zero;}
 .item19 {grid-area: decim;}
-.item20 {grid-area: equal;}
+.item20 {grid-area: clearEqual;}
+.item21 {grid-area: equal;}
+
+.single:hover {
+  background-color: lightblue;
+  color: black;
+}
+
+.single:active {
+  background-color: rgb(150, 185, 197);
+  color: black;
+}
+
 
 #output{
   text-align: right;
@@ -48,7 +60,7 @@ $secondary-color: #2196F3;
     'nine eight seven multiplication'
     'six five four minus'
     'three two one plus'
-    'zero decim equal equal';
+    'zero decim clearEqual equal';
   grid-gap: 2px;
   background-color:$secondary-color;
   padding: 10px;
