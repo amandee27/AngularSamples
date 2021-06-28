@@ -18,7 +18,7 @@
           id="output"
           name="output"
           readonly
-          [value]="readNoOutput ? currentNo : sum"
+          [value]="result"
         />
       </div>
       <div class="item2">
@@ -28,10 +28,10 @@
         <button class="single" (click)="backSpace()">B</button>
       </div>
       <div class="item4">
-        <button class="single" (click)="presentageSign()">%</button>
+        <button class="single" (click)="presentageSign()" [disabled]="!!msg">%</button>
       </div>
       <div class="item5">
-        <button class="single" (click)="readSign('/')">/</button>
+        <button class="single" (click)="readSign('/')"  [disabled]="!!msg">/</button>
       </div>
       <div class="item6">
         <button class="single" (click)="readNo('9')">9</button>
@@ -43,7 +43,7 @@
         <button class="single" (click)="readNo('7')">7</button>
       </div>
       <div class="item9">
-        <button class="single" (click)="readSign('*')">*</button>
+        <button class="single" (click)="readSign('*')"  [disabled]="!!msg">*</button>
       </div>
       <div class="item10">
         <button class="single" (click)="readNo('6')">6</button>
@@ -55,7 +55,7 @@
         <button class="single" (click)="readNo('4')">4</button>
       </div>
       <div class="item13">
-        <button class="single" (click)="readSign('-')">-</button>
+        <button class="single" (click)="readSign('-')"  [disabled]="!!msg">-</button>
       </div>
       <div class="item14">
         <button class="single" (click)="readNo('3')">3</button>
@@ -67,13 +67,13 @@
         <button class="single" (click)="readNo('1')" value="1">1</button>
       </div>
       <div class="item17">
-        <button class="single" (click)="readSign('+')">+</button>
+        <button class="single" (click)="readSign('+')"  [disabled]="!!msg">+</button>
       </div>
       <div class="item18">
         <button class="single" (click)="readNo('0')">0</button>
       </div>
       <div class="item19">
-        <button class="single" (click)="readNo('.')">.</button>
+        <button class="single" (click)="readNo('.')"  [disabled]="!!msg">.</button>
       </div>
       <div class="item20">
         <button class="single" (click)="clearEqual()">CE</button>
