@@ -17,31 +17,32 @@
       <h5 style="margin-bottom:0px">TODO</h5>
       <hr>
       <div class="list">
-        <div *ngFor="let todo of todoes">
-          <div>
-            <div class="row">
-              <div class="col">
-                <input type="checkbox" id="list1" name="list1" value="list1">
-                <ng-template [ngIf]="editTodo" [ngIfElse]="loading">
-                  <input  [(ngModel)]="val" >{{val}}
-                </ng-template>
-                <ng-template #loading>
-                  <label for="list1" >{{todo}}</label>
-                </ng-template>
-                <br>
+        <div *ngFor="let todo of todoes; let i = index">
+          <div> 
+              <div class="row">
+                <div class="col">
+                  <input type="checkbox" id="list1" name="list1" value="list1">
+                  <ng-template [ngIf]="editIndex===i" [ngIfElse]="loading">
+                    <input  [(ngModel)]="val" >{{val}}
+                  </ng-template>
+                  <ng-template #loading>
+                    <label for="list1" >{{todo}}</label>
+                  </ng-template>
+                  <br>
+                </div>
+                <div class="col">
+                  <ng-template [ngIf]="editIndex!==i" [ngIfElse]="update">
+                    <button (click)="edit(i)">Edit</button>
+                  </ng-template>
+                  <ng-template #update>
+                    <button (click)="done(todo)">Done</button>
+                  </ng-template>
+                  
+                  <button (click)="delete(todo)">Delete</button>
+                </div>
+                <hr style="border-top: 0.5px solid #2222">
               </div>
-              <div class="col">
-                <ng-template [ngIf]="!editTodo" [ngIfElse]="update">
-                  <button (click)="edit(todo)">Edit</button>
-                </ng-template>
-                <ng-template #update>
-                  <button (click)="done(todo)">Done</button>
-                </ng-template>
-                
-                <button (click)="delete(todo)">Delete</button>
-              </div>
-              <hr style="border-top: 0.5px solid #2222">
-            </div>
+            
           </div>
         </div>
       </div>

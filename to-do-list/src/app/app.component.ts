@@ -9,21 +9,23 @@ export class AppComponent {
   title = 'to-do-list';
   todoes:string[]=[];
   count:number=this.todoes.length;
-  editTodo:boolean=false;
   val:string="";
+  editIndex:number=-1;
   addToDo(activity:string){
     this.todoes.push(activity);
     console.log(this.todoes);
     console.log(this.todoes.length);
   }
 
-  edit(todo:string){
-    console.log(todo);
-    this.val=todo;
-    this.editTodo=true;
+  edit(todoIndex:number){
+    this.editIndex=todoIndex;
+    console.log(todoIndex);
+    this.val=this.todoes[this.editIndex];
   }
   done(updateName:string){
-    this.editTodo=false;
+    this.todoes[this.editIndex]=this.val;
+    this.val="";
+    this.editIndex=-1;
     console.log(updateName);
   }
 
