@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
 
+interface Todo {
+  text: string;
+  isCompleted: boolean;
+
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,31 +14,30 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'to-do-list';
   todoes:string[]=[];
+  todoItems:Todo[] = [];
   count:number=this.todoes.length;
   val:string="";
   editIndex:number=-1;
   addToDo(activity:string){
-    this.todoes.push(activity);
-    console.log(this.todoes);
-    console.log(this.todoes.length);
+    this.todoItems.push({ text: activity, isCompleted: false });
+    console.log(this.todoItems);
   }
 
   edit(todoIndex:number){
-    this.editIndex=todoIndex;
     console.log(todoIndex);
-    this.val=this.todoes[this.editIndex];
+    this.editIndex=todoIndex;
+    this.val=this.todoItems[this.editIndex].text;
   }
   done(updateName:string){
-    this.todoes[this.editIndex]=this.val;
+
+    this.todoItems[this.editIndex].text=this.val;
     this.val="";
     this.editIndex=-1;
     console.log(updateName);
   }
 
-  delete(todo:string){
-    console.log(this.todoes.indexOf(todo));
-    var index=this.todoes.indexOf(todo);
-    this.todoes.splice(index, 1); //remove an 1 element from arraya starting from index 
+  delete(index:number){
+    this.todoItems.splice(index, 1); //remove an 1 element from arraya starting from index 
     console.log(this.todoes);
   }
 }

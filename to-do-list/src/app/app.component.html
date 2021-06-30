@@ -17,7 +17,7 @@
       <h5 style="margin-bottom:0px">TODO</h5>
       <hr>
       <div class="list">
-        <div *ngFor="let todo of todoes; let i = index">
+        <div *ngFor="let todoItem of todoItems; let i = index">
           <div> 
               <div class="row">
                 <div class="col">
@@ -26,7 +26,7 @@
                     <input  [(ngModel)]="val" >{{val}}
                   </ng-template>
                   <ng-template #loading>
-                    <label for="list1" >{{todo}}</label>
+                    <label for="list1" >{{todoItem.text}}</label>
                   </ng-template>
                   <br>
                 </div>
@@ -35,10 +35,10 @@
                     <button (click)="edit(i)">Edit</button>
                   </ng-template>
                   <ng-template #update>
-                    <button (click)="done(todo)">Done</button>
+                    <button (click)="done(todoItem.text)">Done</button>
                   </ng-template>
                   
-                  <button (click)="delete(todo)">Delete</button>
+                  <button (click)="delete(i)">Delete</button>
                 </div>
                 <hr style="border-top: 0.5px solid #2222">
               </div>
