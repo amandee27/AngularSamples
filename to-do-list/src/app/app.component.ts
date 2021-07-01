@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 interface Todo {
   text: string;
   isCompleted: boolean;
-
+  priority: string;
 }
 
 @Component({
@@ -17,10 +17,14 @@ export class AppComponent {
   todoItems:Todo[] = [];
   count:number=this.todoes.length;
   val:string="";
+  valInit:string="";
   editIndex:number=-1;
+  priority=[{text:"High", val:"high"}, {text:"Medium", val:"medium"}, {text:"Low", val:"low"}];
+  selected="medium";
   addToDo(activity:string){
-    this.todoItems.push({ text: activity, isCompleted: false });
+    this.todoItems.push({ text: activity, isCompleted: false, priority:this.selected });
     console.log(this.todoItems);
+    this.valInit="";
   }
 
   edit(todoIndex:number){

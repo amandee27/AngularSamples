@@ -10,8 +10,12 @@
     <div class="addItem">
       <h5 style="margin-bottom:0px">ADD ITEM</h5>
       <hr>
-      <input type="text" style="margin-top:10px" #todo>
+      <input type="text" style="margin-top:10px" [(ngModel)]="valInit" #todo>
     <button (click)="addToDo(todo.value)">Add</button>
+    <select [(ngModel)]="selected">
+      <option *ngFor="let d of priority" [value]="d.val" id="d.val">{{d.text}}</option>
+    </select>
+    {{selected}}
     </div>
     <div class="toDo">
       <h5 style="margin-bottom:0px">TODO</h5>
@@ -24,10 +28,14 @@
                   <input type="checkbox" id="list1" name="list1" value="list1">
                   <ng-template [ngIf]="editIndex===i" [ngIfElse]="loading">
                     <input  [(ngModel)]="val" >{{val}}
+                    <select [(ngModel)]="todoItem.priority">
+                      <option *ngFor="let d of priority" [value]="d.val">{{d.text}}</option>
+                    </select>
                   </ng-template>
                   <ng-template #loading>
                     <label for="list1" >{{todoItem.text}}</label>
-                  </ng-template>
+                  </ng-template> 
+                  <button style="margin-left: 20px; margin-bottom: 20px;">{{todoItem.priority}}</button>
                   <br>
                 </div>
                 <div class="col">
