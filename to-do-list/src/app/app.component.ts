@@ -4,6 +4,7 @@ interface Todo {
   text: string;
   isCompleted: boolean;
   priority: string;
+  checked: boolean;
 }
 
 @Component({
@@ -15,14 +16,17 @@ export class AppComponent {
   title = 'to-do-list';
   todoes:string[]=[];
   todoItems:Todo[] = [];
+  completedTodoItems:Todo[]=[];
   count:number=this.todoes.length;
   val:string="";
   valInit:string="";
   editIndex:number=-1;
   priority=[{text:"High", val:"high"}, {text:"Medium", val:"medium"}, {text:"Low", val:"low"}];
   selected="medium";
+  checked=false;
   addToDo(activity:string){
-    this.todoItems.push({ text: activity, isCompleted: false, priority:this.selected });
+    this.checked=false;
+    this.todoItems.push({ text: activity, isCompleted: false, priority:this.selected, checked:this.checked });
     console.log(this.todoItems);
     this.valInit="";
   }
