@@ -16,7 +16,6 @@ export class AppComponent {
   title = 'to-do-list';
   todoes:string[]=[];
   todoItems:Todo[] = [];
-  completedTodoItems:Todo[]=[];
   count:number=this.todoes.length;
   val:string="";
   valInit:string="";
@@ -29,6 +28,7 @@ export class AppComponent {
     this.todoItems.push({ text: activity, isCompleted: false, priority:this.selected, checked:this.checked });
     console.log(this.todoItems);
     this.valInit="";
+    localStorage.setItem("dataItems", JSON.stringify(this.todoItems));
   }
 
   edit(todoIndex:number){
