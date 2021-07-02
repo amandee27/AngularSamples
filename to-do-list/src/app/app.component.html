@@ -10,8 +10,8 @@
     <div class="addItem">
       <h5 style="margin-bottom:0px">ADD ITEM</h5>
       <hr>
-      <input type="text" style="margin-top:10px" [(ngModel)]="valInit" #todo>
-    <button (click)="addToDo(todo.value)">Add</button>
+      <input class="todo" type="text" style="margin-top:10px" [(ngModel)]="valInit" #todo>
+    <button class="add" (click)="addToDo(todo.value)">Add</button>
     <select [(ngModel)]="selected">
       <option *ngFor="let d of priority" [value]="d.val" id="d.val">{{d.text}}</option>
     </select>
@@ -25,7 +25,7 @@
             <div> 
               <div class="row">
                 <div class="col">
-                  <input type="checkbox" id="list1" name="list1" value="list1" [(ngModel)]="todoItem.checked">
+                  <input type="checkbox" [(ngModel)]="todoItem.checked">
                   <ng-template [ngIf]="editIndex===i" [ngIfElse]="loading">
                     <input  [(ngModel)]="val" >
                     <select [(ngModel)]="todoItem.priority">
@@ -33,20 +33,20 @@
                     </select>
                   </ng-template>
                   <ng-template #loading>
-                    <label for="list1" >{{todoItem.text}}</label>
+                    <label class="item" for="list1" >{{todoItem.text}}</label>
                   </ng-template> 
-                  <button style="margin-left: 20px; margin-bottom: 20px;">{{todoItem.priority}}</button>
+                  <button class="prio" >{{todoItem.priority}}</button>
                   <br>
                 </div>
-                <div class="col">
+                <div class ="col buttons" >
                   <ng-template [ngIf]="editIndex!==i" [ngIfElse]="update">
-                    <button (click)="edit(i)">Edit</button>
+                    <button class ="edit" (click)="edit(i)">Edit</button>
                   </ng-template>
                   <ng-template #update>
-                    <button (click)="done(todoItem.text)">Done</button>
+                    <button class="done" (click)="done(todoItem.text)">Done</button>
                   </ng-template>
                   
-                  <button (click)="delete(i)">Delete</button>
+                  <button class="delete" (click)="delete(i)">Delete</button>
                 </div>
                 <hr style="border-top: 0.5px solid #2222">
               </div>
@@ -74,20 +74,20 @@
                     </select>
                   </ng-template>
                   <ng-template #loading>
-                    <label for="list1" ><s>{{todoItem.text}}</s></label>
+                    <label class="item" for="list1" ><s>{{todoItem.text}}</s></label>
                   </ng-template> 
-                  <button style="margin-left: 20px; margin-bottom: 20px;">{{todoItem.priority}}</button>
+                  <button class="prio">{{todoItem.priority}}</button>
                   <br>
                 </div>
-                <div class="col">
+                <div class ="col buttons" >
                   <ng-template [ngIf]="editIndex!==i" [ngIfElse]="update">
-                    <button (click)="edit(i)">Edit</button>
+                    <button class ="edit" (click)="edit(i)">Edit</button>
                   </ng-template>
                   <ng-template #update>
-                    <button (click)="done(todoItem.text)">Done</button>
+                    <button class="done" (click)="done(todoItem.text)">Done</button>
                   </ng-template>
                   
-                  <button (click)="delete(i)">Delete</button>
+                  <button class="delete" (click)="delete(i)">Delete</button>
                 </div>
                 <hr style="border-top: 0.5px solid #2222">
               </div>

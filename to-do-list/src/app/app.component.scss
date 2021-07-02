@@ -2,3 +2,119 @@
     width: 600px;
     margin: 0 auto;
   }
+
+  .item{
+    font-size: medium;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .buttons{
+    float: right;
+  }
+
+  .add{
+    background-color: green;
+    border:  2px solid green;
+    margin: 10px;
+    width: 80px;
+    height: 30px;
+    font-size: medium;
+    font-weight: normal;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: white;
+    border-radius: 12px;
+  }
+  .add:hover{
+    background-color:  #008800;
+    border-radius: 12px;
+    border:  2px solid #008800;
+  }
+
+  .todo{
+    background-color: #EEFFBB;
+    border: none;
+    height: 30px;
+    width: 200px;
+    border-radius: 12px;
+  }
+
+  .todo:focus{
+    background-color: #DDFF77;
+    outline: none !important;
+    border-radius: 12px;
+  }
+
+  .edit{
+    background-color: green;
+    border:  2px solid green;
+    margin: 10px;
+    width: 80px;
+    height: 30px;
+    font-size: medium;
+    font-weight: normal;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: white;
+    border-radius: 12px;
+  }
+
+  .edit:hover{
+    background-color: #008800;
+    border-radius: 12px;
+    border:  2px solid #008800;
+  }
+
+  .delete{
+    background-color: #cc0000;
+    border:  2px solid #cc0000;
+    margin: 10px;
+    width: 80px;
+    height: 30px;
+    font-size: medium;
+    font-weight: normal;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: white;
+    border-radius: 12px;
+  }
+
+  .delete:hover{
+    background-color: #AA0000;
+    border-radius: 12px;
+    border:  2px solid #AA0000;
+  }
+  div.col{
+    display: inline-block;
+  }
+
+  .done{
+    background-color: #00AAAA;
+    border:  2px solid #00AAAA;
+    margin: 10px;
+    width: 80px;
+    height: 30px;
+    font-size: medium;
+    font-weight: normal;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: white;
+    border-radius: 12px;
+  }
+  .done:hover{
+    background-color: #00DDDD;
+    border-radius: 12px;
+    border:  2px solid #00DDDD;
+  }
+ 
+  .prio{
+    background-color: #000088;
+    border:  2px solid #000088;
+    margin: 10px;
+    width: 50px;
+    height: 20px;
+    font-size: xx-small;
+    font-weight: lighter;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: white;
+    margin-left: 20px; 
+    margin-bottom: 20px;
+    border-radius: 12px;
+  }
