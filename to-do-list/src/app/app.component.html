@@ -1,105 +1,127 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>ToDo List</title>
-</head>
-<body>
-  <div class="container">
-    <div class="addItem">
-      <h5 style="margin-bottom:0px">ADD ITEM</h5>
-      <hr>
-      <input class="todo" type="text" style="margin-top:10px" [(ngModel)]="valInit" #todo>
-    <button class="add" (click)="addToDo(todo.value)">Add</button>
-    <select [(ngModel)]="selected">
-      <option *ngFor="let d of priority" [value]="d.val" id="d.val">{{d.text}}</option>
-    </select>
-    </div>
-    <div class="toDo">
-      <h5 style="margin-bottom:0px">TODO</h5>
-      <hr>
-      <div class="list">
-        <div *ngFor="let todoItem of todoItems; let i = index">
-          <ng-template [ngIf]="!todoItem.checked">
-            <div> 
-              <div class="row">
-                <div class="col">
-                  <input type="checkbox" [(ngModel)]="todoItem.checked">
-                  <ng-template [ngIf]="editIndex===i" [ngIfElse]="loading">
-                    <input  [(ngModel)]="val" >
-                    <select [(ngModel)]="todoItem.priority">
-                      <option *ngFor="let d of priority" [value]="d.val">{{d.text}}</option>
-                    </select>
-                  </ng-template>
-                  <ng-template #loading>
-                    <label class="item" for="list1" >{{todoItem.text}}</label>
-                  </ng-template> 
-                  <button class="prio" >{{todoItem.priority}}</button>
-                  <br>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>ToDo List</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="addItem">
+        <h5 style="margin-bottom: 0px">ADD ITEM</h5>
+        <hr />
+        <input
+          class="todo"
+          type="text"
+          style="margin-top: 10px"
+          [(ngModel)]="valInit"
+          #todo
+        />
+        <button class="add" (click)="addToDo(todo.value)">Add</button>
+        <select [(ngModel)]="selected">
+          <option *ngFor="let d of priority" [value]="d.val" id="d.val">
+            {{ d.text }}
+          </option>
+        </select>
+      </div>
+      <div class="toDo">
+        <h5 style="margin-bottom: 0px">TODO</h5>
+        <hr />
+        <div class="list">
+          <div *ngFor="let todoItem of todoItems; let i = index">
+            <ng-template [ngIf]="!todoItem.checked">
+              <div>
+                <div class="row">
+                  <div class="col">
+                    <input type="checkbox" [(ngModel)]="todoItem.checked" />
+                    <ng-template [ngIf]="editIndex === i" [ngIfElse]="loading">
+                      <input [(ngModel)]="val" />
+                      <select [(ngModel)]="todoItem.priority">
+                        <option *ngFor="let d of priority" [value]="d.val">
+                          {{ d.text }}
+                        </option>
+                      </select>
+                    </ng-template>
+                    <ng-template #loading>
+                      <label class="item" for="list1">{{
+                        todoItem.text
+                      }}</label>
+                    </ng-template>
+                    <button class="prio">{{ todoItem.priority }}</button>
+                    <br />
+                  </div>
+                  <div class="col buttons">
+                    <ng-template [ngIf]="editIndex !== i" [ngIfElse]="update">
+                      <button class="edit" (click)="edit(i)">Edit</button>
+                    </ng-template>
+                    <ng-template #update>
+                      <button class="done" (click)="done(todoItem.text)">
+                        Done
+                      </button>
+                    </ng-template>
+
+                    <button class="delete" (click)="delete(i)">Delete</button>
+                  </div>
+                  <hr style="border-top: 0.5px solid #2222" />
                 </div>
-                <div class ="col buttons" >
-                  <ng-template [ngIf]="editIndex!==i" [ngIfElse]="update">
-                    <button class ="edit" (click)="edit(i)">Edit</button>
-                  </ng-template>
-                  <ng-template #update>
-                    <button class="done" (click)="done(todoItem.text)">Done</button>
-                  </ng-template>
-                  
-                  <button class="delete" (click)="delete(i)">Delete</button>
-                </div>
-                <hr style="border-top: 0.5px solid #2222">
               </div>
-            
+            </ng-template>
           </div>
-          </ng-template>
-          
+        </div>
+      </div>
+      <div class="completed">
+        <h5 style="margin-bottom: 0px">COMPLETED</h5>
+        <hr />
+        <div class="completed-list">
+          <div *ngFor="let todoItem of todoItems; let i = index">
+            <ng-template [ngIf]="todoItem.checked">
+              <div>
+                <div class="row">
+                  <div class="col">
+                    <input
+                      type="checkbox"
+                      id="list1"
+                      name="list1"
+                      value="list1"
+                      [(ngModel)]="todoItem.checked"
+                    />
+                    <ng-template [ngIf]="editIndex === i" [ngIfElse]="loading">
+                      <input [(ngModel)]="val" />
+                      <select [(ngModel)]="todoItem.priority">
+                        <option *ngFor="let d of priority" [value]="d.val">
+                          {{ d.text }}
+                        </option>
+                      </select>
+                    </ng-template>
+                    <ng-template #loading>
+                      <label class="item" for="list1"
+                        ><s>{{ todoItem.text }}</s></label
+                      >
+                    </ng-template>
+                    <button class="prio">{{ todoItem.priority }}</button>
+                    <br />
+                  </div>
+                  <div class="col buttons">
+                    <ng-template [ngIf]="editIndex !== i" [ngIfElse]="update">
+                      <button class="edit" (click)="edit(i)">Edit</button>
+                    </ng-template>
+                    <ng-template #update>
+                      <button class="done" (click)="done(todoItem.text)">
+                        Done
+                      </button>
+                    </ng-template>
+
+                    <button class="delete" (click)="delete(i)">Delete</button>
+                  </div>
+                  <hr style="border-top: 0.5px solid #2222" />
+                </div>
+              </div>
+            </ng-template>
+          </div>
         </div>
       </div>
     </div>
-    <div class="completed">
-      <h5 style="margin-bottom:0px">COMPLETED</h5>
-      <hr>
-      <div class="completed-list">
-        <div *ngFor="let todoItem of todoItems; let i = index">
-          <ng-template [ngIf]="todoItem.checked">
-            <div> 
-              <div class="row">
-                <div class="col">
-                  <input type="checkbox" id="list1" name="list1" value="list1" [(ngModel)]="todoItem.checked">
-                  <ng-template [ngIf]="editIndex===i" [ngIfElse]="loading">
-                    <input  [(ngModel)]="val" >
-                    <select [(ngModel)]="todoItem.priority">
-                      <option *ngFor="let d of priority" [value]="d.val">{{d.text}}</option>
-                    </select>
-                  </ng-template>
-                  <ng-template #loading>
-                    <label class="item" for="list1" ><s>{{todoItem.text}}</s></label>
-                  </ng-template> 
-                  <button class="prio">{{todoItem.priority}}</button>
-                  <br>
-                </div>
-                <div class ="col buttons" >
-                  <ng-template [ngIf]="editIndex!==i" [ngIfElse]="update">
-                    <button class ="edit" (click)="edit(i)">Edit</button>
-                  </ng-template>
-                  <ng-template #update>
-                    <button class="done" (click)="done(todoItem.text)">Done</button>
-                  </ng-template>
-                  
-                  <button class="delete" (click)="delete(i)">Delete</button>
-                </div>
-                <hr style="border-top: 0.5px solid #2222">
-              </div>
-            
-          </div>
-          </ng-template>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
+  </body>
 </html>
 
 <router-outlet></router-outlet>
