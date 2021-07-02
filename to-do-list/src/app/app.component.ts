@@ -67,4 +67,8 @@ export class AppComponent {
     this.todoItems.splice(index, 1); //remove an 1 element from arraya starting from index
     this._database.saveData(this.todoItems);
   }
+
+  cancel(){
+    this.editIndex = -1;
+  }
 }

@@ -53,14 +53,14 @@
                   <div class="col buttons">
                     <ng-template [ngIf]="editIndex !== i" [ngIfElse]="update">
                       <button class="edit" (click)="edit(i)">Edit</button>
+                      <button class="delete" (click)="delete(i)">Delete</button>
                     </ng-template>
                     <ng-template #update>
                       <button class="done" (click)="done(todoItem.text)">
                         Done
                       </button>
+                      <button class="cancel" (click)="cancel()">Cancel</button>
                     </ng-template>
-
-                    <button class="delete" (click)="delete(i)">Delete</button>
                   </div>
                   <hr style="border-top: 0.5px solid #2222" />
                 </div>
@@ -104,14 +104,15 @@
                   <div class="col buttons">
                     <ng-template [ngIf]="editIndex !== i" [ngIfElse]="update">
                       <button class="edit" (click)="edit(i)">Edit</button>
+                      <button class="delete" (click)="delete(i)">Delete</button>
                     </ng-template>
                     <ng-template #update>
                       <button class="done" (click)="done(todoItem.text)">
                         Done
                       </button>
-                    </ng-template>
 
-                    <button class="delete" (click)="delete(i)">Delete</button>
+                      <button class="cancel" (click)="cancel()">Cancel</button>
+                    </ng-template>
                   </div>
                   <hr style="border-top: 0.5px solid #2222" />
                 </div>

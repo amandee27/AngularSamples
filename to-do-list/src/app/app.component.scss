@@ -31,6 +31,24 @@
   border: 2px solid #008800;
 }
 
+.cancel {
+  background-color: green;
+  border: 2px solid green;
+  margin: 10px;
+  width: 80px;
+  height: 30px;
+  font-size: medium;
+  font-weight: normal;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: white;
+  border-radius: 12px;
+}
+
+.cancel:hover {
+  background-color: #008800;
+  border-radius: 12px;
+  border: 2px solid #008800;
+}
 .todo {
   background-color: #eeffbb;
   border: none;
