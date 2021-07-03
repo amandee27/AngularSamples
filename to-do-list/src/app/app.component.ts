@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
-import { DatabaseService } from './database.service';
-
-export interface Todo {
-  text: string;
-  isCompleted: boolean;
-  priority: string;
-  checked: boolean;
-}
+import { DatabaseService } from './services/database.service';
+import { Todo } from './models/todo';
 
 @Component({
   selector: 'app-root',
@@ -36,13 +30,12 @@ export class AppComponent {
     { text: 'Medium', val: 'medium' },
     { text: 'Low', val: 'low' },
   ];
-  priorityVal: string=''
+  priorityVal: string = '';
   selected = 'medium';
   addToDo(activity: string) {
     if (this.valInit !== '') {
       this.todoItems.push({
         text: activity,
-        isCompleted: false,
         priority: this.selected,
         checked: false,
       });
@@ -54,13 +47,11 @@ export class AppComponent {
   edit(todoIndex: number) {
     this.editIndex = todoIndex;
     this.val = this.todoItems[this.editIndex].text;
-    this.priorityVal=this.todoItems[this.editIndex].priority;
+    this.priorityVal = this.todoItems[this.editIndex].priority;
   }
-  done(updateName: string) {
+  done() {
     this.todoItems[this.editIndex].text = this.val;
-    this.todoItems[this.editIndex].priority= this.priorityVal;
-    this.val = '';
-    this.priorityVal='';
+    this.todoItems[this.editIndex].priority = this.priorityVal;
     this.editIndex = -1;
     this._database.saveData(this.todoItems);
   }
@@ -70,13 +61,12 @@ export class AppComponent {
     this._database.saveData(this.todoItems);
   }
 
-  cancel(){
-    this.priorityVal='';
+  cancel() {
     this.editIndex = -1;
   }
 
-  checkItem(event: Event, index:number){
-    this.todoItems[index].checked=(event.target as HTMLInputElement).checked;
+  checkItem(event: Event, index: number) {
+    this.todoItems[index].checked = (event.target as HTMLInputElement).checked;
     console.log(this.todoItems[index].checked);
     this._database.saveData(this.todoItems);
   }

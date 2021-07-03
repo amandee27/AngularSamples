@@ -33,7 +33,11 @@
               <div>
                 <div class="row">
                   <div class="col">
-                    <input type="checkbox" [checked]="todoItem.checked" (change)="checkItem($event,i)"/>
+                    <input
+                      type="checkbox"
+                      [checked]="todoItem.checked"
+                      (change)="checkItem($event, i)"
+                    />
                     <ng-template [ngIf]="editIndex === i" [ngIfElse]="loading">
                       <input [(ngModel)]="val" />
                       <select [(ngModel)]="priorityVal">
@@ -56,9 +60,7 @@
                       <button class="delete" (click)="delete(i)">Delete</button>
                     </ng-template>
                     <ng-template #update>
-                      <button class="done" (click)="done(todoItem.text)">
-                        Done
-                      </button>
+                      <button class="done" (click)="done()">Done</button>
                       <button class="cancel" (click)="cancel()">Cancel</button>
                     </ng-template>
                   </div>
@@ -80,8 +82,8 @@
                   <div class="col">
                     <input
                       type="checkbox"
-                      [checked]="todoItem.checked" 
-                      (change)="checkItem($event,i)"
+                      [checked]="todoItem.checked"
+                      (change)="checkItem($event, i)"
                     />
                     <ng-template [ngIf]="editIndex === i" [ngIfElse]="loading">
                       <input [(ngModel)]="val" />
@@ -105,9 +107,7 @@
                       <button class="delete" (click)="delete(i)">Delete</button>
                     </ng-template>
                     <ng-template #update>
-                      <button class="done" (click)="done(todoItem.text)">
-                        Done
-                      </button>
+                      <button class="done" (click)="done()">Done</button>
 
                       <button class="cancel" (click)="cancel()">Cancel</button>
                     </ng-template>
