@@ -36,16 +36,15 @@ export class AppComponent {
     { text: 'Medium', val: 'medium' },
     { text: 'Low', val: 'low' },
   ];
+  priorityVal: string=''
   selected = 'medium';
-  checked = false;
   addToDo(activity: string) {
-    this.checked = false;
     if (this.valInit !== '') {
       this.todoItems.push({
         text: activity,
         isCompleted: false,
         priority: this.selected,
-        checked: this.checked,
+        checked: false,
       });
     }
     this.valInit = '';
@@ -55,10 +54,13 @@ export class AppComponent {
   edit(todoIndex: number) {
     this.editIndex = todoIndex;
     this.val = this.todoItems[this.editIndex].text;
+    this.priorityVal=this.todoItems[this.editIndex].priority;
   }
   done(updateName: string) {
     this.todoItems[this.editIndex].text = this.val;
+    this.todoItems[this.editIndex].priority= this.priorityVal;
     this.val = '';
+    this.priorityVal='';
     this.editIndex = -1;
     this._database.saveData(this.todoItems);
   }
@@ -69,6 +71,13 @@ export class AppComponent {
   }
 
   cancel(){
+    this.priorityVal='';
     this.editIndex = -1;
+  }
+
+  checkItem(event: Event, index:number){
+    this.todoItems[index].checked=(event.target as HTMLInputElement).checked;
+    console.log(this.todoItems[index].checked);
+    this._database.saveData(this.todoItems);
   }
 }
