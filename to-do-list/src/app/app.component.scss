@@ -13,24 +13,6 @@
   float: right;
 }
 
-.add {
-  background-color: green;
-  border: 2px solid green;
-  margin: 10px;
-  width: 80px;
-  height: 30px;
-  font-size: medium;
-  font-weight: normal;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  color: white;
-  border-radius: 12px;
-}
-.add:hover {
-  background-color: #008800;
-  border-radius: 12px;
-  border: 2px solid #008800;
-}
-
 .cancel {
   background-color: green;
   border: 2px solid green;
@@ -48,19 +30,6 @@
   background-color: #008800;
   border-radius: 12px;
   border: 2px solid #008800;
-}
-.todo {
-  background-color: #eeffbb;
-  border: none;
-  height: 30px;
-  width: 200px;
-  border-radius: 12px;
-}
-
-.todo:focus {
-  background-color: #ddff77;
-  outline: none !important;
-  border-radius: 12px;
 }
 
 .edit {

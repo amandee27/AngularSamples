@@ -7,23 +7,15 @@
   </head>
   <body>
     <div class="container">
-      <div class="addItem">
-        <h5 style="margin-bottom: 0px">ADD ITEM</h5>
-        <hr />
-        <input
-          class="todo"
-          type="text"
-          style="margin-top: 10px"
-          [(ngModel)]="valInit"
-          #todo
-        />
-        <button class="add" (click)="addToDo(todo.value)">Add</button>
-        <select [(ngModel)]="selected">
-          <option *ngFor="let d of priority" [value]="d.val" id="d.val">
-            {{ d.text }}
-          </option>
-        </select>
-      </div>
+      <app-add-item (add)="handleAddItem($event)"></app-add-item>
+      <app-todo-list
+        [todoItems]="todoItems"
+        (update)="handleUpdate($event)"
+        (delete)="handleDelete($event)"
+      ></app-todo-list>
+    </div>
+    <!-- <div class="container">
+      <app-add-item (add)="addToDo($event)"></app-add-item>
       <div class="toDo">
         <h5 style="margin-bottom: 0px">TODO</h5>
         <hr />
@@ -119,7 +111,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </body>
 </html>
 

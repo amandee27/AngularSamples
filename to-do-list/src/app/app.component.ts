@@ -23,40 +23,17 @@ export class AppComponent {
   todoItems: Todo[] = [];
   count: number = this.todoes.length;
   val: string = '';
-  valInit: string = '';
   editIndex: number = -1;
-  priority = [
-    { text: 'High', val: 'high' },
-    { text: 'Medium', val: 'medium' },
-    { text: 'Low', val: 'low' },
-  ];
+
   priorityVal: string = '';
   selected = 'medium';
-  addToDo(activity: string) {
-    if (this.valInit !== '') {
-      this.todoItems.push({
-        text: activity,
-        priority: this.selected,
-        checked: false,
-      });
-    }
-    this.valInit = '';
+  handleAddItem(item: Todo) {
+    this.todoItems.push(item);
     this._database.saveData(this.todoItems);
+    console.log(this.todoItems);
   }
 
-  edit(todoIndex: number) {
-    this.editIndex = todoIndex;
-    this.val = this.todoItems[this.editIndex].text;
-    this.priorityVal = this.todoItems[this.editIndex].priority;
-  }
-  done() {
-    this.todoItems[this.editIndex].text = this.val;
-    this.todoItems[this.editIndex].priority = this.priorityVal;
-    this.editIndex = -1;
-    this._database.saveData(this.todoItems);
-  }
-
-  delete(index: number) {
+  handleDelete(index: number) {
     this.todoItems.splice(index, 1); //remove an 1 element from arraya starting from index
     this._database.saveData(this.todoItems);
   }
@@ -65,9 +42,8 @@ export class AppComponent {
     this.editIndex = -1;
   }
 
-  checkItem(event: Event, index: number) {
-    this.todoItems[index].checked = (event.target as HTMLInputElement).checked;
-    console.log(this.todoItems[index].checked);
+  handleUpdate(todoWithIndex: [Todo, number]) {
+    this.todoItems[todoWithIndex[1]] = todoWithIndex[0];
     this._database.saveData(this.todoItems);
   }
 }

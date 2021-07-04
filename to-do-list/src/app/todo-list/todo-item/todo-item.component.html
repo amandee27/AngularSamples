@@ -1,1 +1,39 @@
-<p>todo-item works!</p>
+<div>
+  <div class="row">
+    <div class="col">
+      <input
+        type="checkbox"
+        [checked]="todoItem !== undefined ? todoItem.checked : false"
+        (change)="handleCheckItem($event)"
+      />
+      <ng-template [ngIf]="isEdit" [ngIfElse]="loading">
+        <input [(ngModel)]="val" />
+        <select [(ngModel)]="priorityVal">
+          <option *ngFor="let d of priority" [value]="d.val">
+            {{ d.text }}
+          </option>
+        </select>
+      </ng-template>
+      <ng-template #loading>
+        <label class="item" for="list1">{{
+          todoItem !== undefined ? todoItem.text : ""
+        }}</label>
+      </ng-template>
+      <button class="prio">
+        {{ todoItem !== undefined ? todoItem.priority : "" }}
+      </button>
+      <br />
+    </div>
+    <div class="col buttons">
+      <ng-template [ngIf]="!isEdit" [ngIfElse]="update">
+        <button class="edit" (click)="handleEditItem()">Edit</button>
+        <button class="delete" (click)="handleDeleteItem()">Delete</button>
+      </ng-template>
+      <ng-template #update>
+        <button class="done" (click)="handleDone()">Done</button>
+        <button class="cancel" (click)="handleCancel()">Cancel</button>
+      </ng-template>
+    </div>
+    <hr style="border-top: 0.5px solid #2222" />
+  </div>
+</div>

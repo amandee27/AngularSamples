@@ -1,1 +1,17 @@
-<p>add-item works!</p>
+<div class="addItem">
+  <h5 style="margin-bottom: 0px">ADD ITEM</h5>
+  <hr />
+  <input
+    class="todo"
+    type="text"
+    style="margin-top: 10px"
+    [(ngModel)]="valInit"
+    #todo
+  />
+  <button class="add" (click)="addItem(todo.value)">Add</button>
+  <select [(ngModel)]="selected">
+    <option *ngFor="let d of priority" [value]="d.val" id="d.val">
+      {{ d.text }}
+    </option>
+  </select>
+</div>
