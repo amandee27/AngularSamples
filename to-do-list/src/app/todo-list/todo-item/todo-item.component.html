@@ -15,9 +15,16 @@
         </select>
       </ng-template>
       <ng-template #loading>
-        <label class="item" for="list1">{{
-          todoItem !== undefined ? todoItem.text : ""
-        }}</label>
+        <label
+          class="item"
+          for="list1"
+          [style.text-decoration]="
+            todoItem !== undefined && todoItem.checked
+              ? 'line-through'
+              : 'initial'
+          "
+          >{{ todoItem !== undefined ? todoItem.text : "" }}</label
+        >
       </ng-template>
       <button class="prio">
         {{ todoItem !== undefined ? todoItem.priority : "" }}

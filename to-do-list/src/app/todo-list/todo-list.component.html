@@ -13,3 +13,16 @@
     </div>
   </div>
 </div>
+<div class="completed">
+  <h5 style="margin-bottom: 0px">COMPLETED</h5>
+  <hr />
+  <div class="list" *ngFor="let todoItem of todoItems; let i = index">
+    <ng-template [ngIf]="todoItem.checked">
+      <app-todo-item
+        [todoItem]="todoItem"
+        (update)="handleUpate($event, i)"
+        (delete)="handleDelete(i)"
+      ></app-todo-item>
+    </ng-template>
+  </div>
+</div>
