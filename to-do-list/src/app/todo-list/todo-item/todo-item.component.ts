@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { Todo } from '../../models/todo';
 
 @Component({
@@ -6,10 +14,17 @@ import { Todo } from '../../models/todo';
   templateUrl: './todo-item.component.html',
   styleUrls: ['./todo-item.component.scss'],
 })
-export class TodoItemComponent implements OnInit {
+export class TodoItemComponent {
   constructor() {}
-
-  ngOnInit(): void {}
+  @HostListener('document:click', ['$event'])
+  handleDocumentClick(event: MouseEvent) {
+    //console.log('handleDocumentClick');
+    //console.log(this.todoItemContainer);
+    // if (this.todoItemContainer?.nativeElement.contains(event.target as Node)) {
+    //   console.log('native Element');
+    //   this.isEdit = false;
+    // }
+  }
 
   @Input()
   todoItem?: Todo;
@@ -26,6 +41,8 @@ export class TodoItemComponent implements OnInit {
   ];
 
   isEdit: boolean = false;
+  @ViewChild('todoItemContainer')
+  todoItemContainer?: ElementRef<HTMLElement>;
 
   handleEditItem() {
     if (this.todoItem !== undefined) {
