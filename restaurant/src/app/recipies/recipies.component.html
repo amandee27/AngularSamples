@@ -1,58 +1,48 @@
 <div class="grid-container">
   <div class="row">
     <div class="col">
-      <div class="card" style="width: 18rem">
-        <img class="card-img-top" src="..." alt="Card image cap" />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
+      <input
+        class="form-control mr-sm-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+        [(ngModel)]="parameter"
+      />
     </div>
     <div class="col">
-      <div class="card" style="width: 18rem">
-        <img class="card-img-top" src="..." alt="Card image cap" />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
+      <button
+        class="btn btn-outline-success my-2 my-sm-0"
+        (click)="addParameter()"
+      >
+        Search
+      </button>
     </div>
-    <div class="col">
-      <div class="card" style="width: 18rem">
-        <img class="card-img-top" src="..." alt="Card image cap" />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card" style="width: 18rem">
-        <img class="card-img-top" src="..." alt="Card image cap" />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </div>
+  </div>
+</div>
 
-    <div class="card" style="width: 18rem; border: none"></div>
+<div class="grid-container">
+  <div class="row">
+    <div
+      class="card"
+      style="
+        width: 14rem;
+        border: 1px solid gray;
+        margin-left: 2rem;
+        margin-bottom: 1rem;
+      "
+      *ngFor="let data of recipes"
+    >
+      <img
+        class="card-img-top"
+        [src]="data.recipe.image"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ data.recipe.label }}</h5>
+        <a [href]="data.recipe.url" class="btn button" target="_blank"
+          >Recipe</a
+        >
+      </div>
+    </div>
   </div>
 </div>

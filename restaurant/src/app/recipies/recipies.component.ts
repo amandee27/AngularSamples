@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
+import { recipe } from '../model/recipie';
 
 @Component({
   selector: 'app-recipies',
@@ -7,13 +8,18 @@ import { HttpService } from '../http.service';
   styleUrls: ['./recipies.component.scss'],
 })
 export class RecipiesComponent implements OnInit {
-  recipes: Object = {};
-  constructor(private _http: HttpService) {}
+  public recipes: recipe[] = [];
 
-  ngOnInit(): void {
-    this._http.getRecipies().subscribe((data) => {
-      this.recipes = data;
-      console.log(this.recipes);
+  length = -1;
+  constructor(private _http: HttpService) {}
+  recipesData: recipe[] = [];
+  parameter: string = '';
+
+  ngOnInit(): void {}
+
+  addParameter() {
+    this._http.getRecipies(this.parameter).subscribe((data) => {
+      this.recipes = data.hits;
     });
   }
 }
