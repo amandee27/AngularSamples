@@ -9,6 +9,8 @@ import { RecipiesComponent } from './recipies/recipies.component';
 import { LoginComponent } from './login/login.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { PageNotWorkingComponent } from './page-not-working/page-not-working.component';
+import { RecipieDetailComponent } from './recipie-detail/recipie-detail.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { PageNotWorkingComponent } from './page-not-working/page-not-working.com
     LoginComponent,
     AboutUsComponent,
     PageNotWorkingComponent,
+    RecipieDetailComponent,
+    HomeComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule],
   providers: [],
