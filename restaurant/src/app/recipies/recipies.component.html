@@ -6,13 +6,14 @@
         type="search"
         placeholder="Search"
         aria-label="Search"
-        [(ngModel)]="parameter"
+        [value]="query"
+        #searchBox
       />
     </div>
     <div class="col">
       <button
         class="btn btn-outline-success my-2 my-sm-0"
-        (click)="addParameter()"
+        (click)="handleSearch(searchBox.value)"
       >
         Search
       </button>
@@ -23,7 +24,7 @@
 <div class="grid-container">
   <div class="row">
     <div class="col">
-      <p>You selected the recipe {{ recipeId }}</p>
+      <p>You selected the recipe {{ query }}</p>
     </div>
   </div>
 </div>

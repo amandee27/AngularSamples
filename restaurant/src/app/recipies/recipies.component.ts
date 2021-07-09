@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Params, Router } from '@angular/router';
 import { HttpService } from '../http.service';
 import { recipe } from '../model/recipie';
 
@@ -10,8 +10,7 @@ import { recipe } from '../model/recipie';
 })
 export class RecipiesComponent implements OnInit {
   public recipes: recipe[] = [];
-  public recipeId: any;
-  parameter: string = '';
+  public query: any;
 
   length = -1;
   constructor(
@@ -21,20 +20,18 @@ export class RecipiesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    let newParameter = this.route.snapshot.paramMap.get('id');
-    this.recipeId = newParameter;
-    if (this.recipeId !== null) {
-      this._http.getRecipies(this.recipeId).subscribe((data) => {
-        this.recipes = data.hits;
-      });
-    }
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      let query = params.get('queryText');
+      this.query = query;
+      if (this.query !== null) {
+        this._http.getRecipies(this.query).subscribe((data) => {
+          this.recipes = data.hits;
+        });
+      }
+    });
   }
 
-  addParameter() {
-    this._http.getRecipies(this.parameter).subscribe((data) => {
-      this.recipes = data.hits;
-    });
-
-    this.router.navigate(['/recepies', this.parameter]);
+  handleSearch(parameter: string) {
+    this.router.navigate(['/recepies', parameter]);
   }
 }
