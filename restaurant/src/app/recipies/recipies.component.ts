@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { HttpService } from '../http.service';
-import { recipe } from '../model/recipie';
+import { Recipe } from '../model/recipie';
 
 @Component({
   selector: 'app-recipies',
@@ -9,8 +9,9 @@ import { recipe } from '../model/recipie';
   styleUrls: ['./recipies.component.scss'],
 })
 export class RecipiesComponent implements OnInit {
-  public recipes: recipe[] = [];
+  public recipes: Recipe[] = [];
   public query: string | null = null;
+  public nextRecipiesLink: string = '';
   constructor(
     private _http: HttpService,
     private route: ActivatedRoute,
@@ -25,12 +26,22 @@ export class RecipiesComponent implements OnInit {
       if (this.query !== null) {
         this._http.getRecipies(this.query).subscribe((data) => {
           this.recipes = data.hits;
+          this.nextRecipiesLink = data._links.next.href;
         });
+      } else {
+        this.recipes = [];
       }
     });
   }
 
   handleSearch(parameter: string) {
     this.router.navigate(['/recepies'], { queryParams: { q: parameter } });
+  }
+
+  loadMore() {
+    this._http.getMoreRecipies(this.nextRecipiesLink).subscribe((data) => {
+      this.recipes = this.recipes.concat(data.hits);
+      this.nextRecipiesLink = data._links.next.href;
+    });
   }
 }

@@ -55,3 +55,15 @@
     </div>
   </div>
 </div>
+
+<div class="grid-container">
+  <div class="row">
+    <div class="col">
+      <div>
+        <ng-template [ngIf]="recipes.length > 0">
+          <button (click)="loadMore()">Load More</button>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

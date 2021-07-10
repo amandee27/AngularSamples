@@ -17,4 +17,10 @@ export class HttpService {
     console.log('hey !');
     return this.http.get<RecipieCollection>(_link);
   }
+
+  getMoreRecipies(query: string): Observable<RecipieCollection> {
+    const _link = query;
+    console.log('hey !');
+    return this.http.get<RecipieCollection>(_link);
+  }
 }

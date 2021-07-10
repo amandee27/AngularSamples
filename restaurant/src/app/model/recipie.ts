@@ -7,10 +7,10 @@ export interface RecipieCollection {
       title: string;
     };
   };
-  hits: recipe[];
+  hits: Recipe[];
 }
 
-export interface recipe {
+export interface Recipe {
   recipe: {
     label: string;
     image: string;
