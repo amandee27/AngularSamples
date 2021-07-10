@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { HttpService } from '../http.service';
 import { Recipe } from '../model/recipie';
+import { RecipieDetailComponent } from '../recipie-detail/recipie-detail.component';
 
 @Component({
   selector: 'app-recipies',
   templateUrl: './recipies.component.html',
   styleUrls: ['./recipies.component.scss'],
 })
-export class RecipiesComponent implements OnInit {
+export class RecipiesComponent implements OnInit, OnDestroy {
   public recipes: Recipe[] = [];
   public query: string | null = null;
   public nextRecipiesLink: string = '';
@@ -18,7 +19,11 @@ export class RecipiesComponent implements OnInit {
     private router: Router
   ) {}
 
+  ngOnDestroy() {
+    console.log('Recipes component Destroy');
+  }
   ngOnInit(): void {
+    console.log('Recipe component init');
     this.route.queryParamMap.subscribe((params: ParamMap) => {
       let query = params.get('q');
       console.log(params.get('id'));
@@ -43,5 +48,14 @@ export class RecipiesComponent implements OnInit {
       this.recipes = this.recipes.concat(data.hits);
       this.nextRecipiesLink = data._links.next.href;
     });
+  }
+
+  recepieDetail(url: string) {
+    var regex = /\/v2\/(.*)\?/g;
+    let matches = regex.exec(url);
+    if (matches !== null) {
+      let id = matches[1];
+      this.router.navigate(['/recepies', id]);
+    }
   }
 }

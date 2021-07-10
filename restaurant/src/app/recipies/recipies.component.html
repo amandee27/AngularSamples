@@ -51,6 +51,9 @@
         <a [href]="data.recipe.url" class="btn button" target="_blank"
           >Recipe</a
         >
+        <a class="btn button" (click)="recepieDetail(data._links.self.href)"
+          >Recipe Detail</a
+        >
       </div>
     </div>
   </div>
