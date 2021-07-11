@@ -1,0 +1,44 @@
+<div>
+  <div class="row">
+    <div class="col">
+      <h5>Diet</h5>
+    </div>
+    <div class="col">
+      <div *ngFor="let lable of dietLable">
+        <p>{{ lable }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col"><h5>Calories</h5></div>
+    <div class="col">
+      <p>{{ calories }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col"><h5>Total Time</h5></div>
+    <div class="col">{{ totalTime }}</div>
+  </div>
+  <div class="row">
+    <div class="col"><h5>Meal Type</h5></div>
+    <div class="col">
+      <div class="row" *ngFor="let type of mealType">
+        <div class="col">
+          <p>{{ type }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col"><h5>Dish Type</h5></div>
+    <div class="col">
+      <div class="row" *ngFor="let type of dishType">
+        <div class="col">
+          <p>{{ type }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row"></div>
+  <div class="row"></div>
+</div>

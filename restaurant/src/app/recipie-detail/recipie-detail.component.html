@@ -1,1 +1,50 @@
-<p>recipie-detail works!</p>
+<div class="row mt-3">
+  <div class="col">
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center">{{ recipieLable }}</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col text-center mt-5">
+        <img [src]="recipeImage" class="rounded" alt="..." />
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div>
+      <div class="row">
+        <div class="col">
+          <ul class="nav nav-pills">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                [routerLink]="['./']"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                >Detail</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                [routerLink]="['nutrients']"
+                routerLinkActive="active"
+                >Nutrition</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                [routerLink]="['ingedients']"
+                routerLinkActive="active"
+                >Ingredients</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div><router-outlet></router-outlet></div>
+  </div>
+</div>

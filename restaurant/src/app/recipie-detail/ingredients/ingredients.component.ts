@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { HttpService } from '../http.service';
-import { RecipieDetail } from '../model/RecipieDetail';
+import { HttpService } from 'src/app/http.service';
+import { RecipieDetail } from 'src/app/model/RecipieDetail';
 
 @Component({
-  selector: 'app-recipie-detail',
-  templateUrl: './recipie-detail.component.html',
-  styleUrls: ['./recipie-detail.component.scss'],
+  selector: 'app-ingredients',
+  templateUrl: './ingredients.component.html',
+  styleUrls: ['./ingredients.component.scss'],
 })
-export class RecipieDetailComponent implements OnInit {
-  //recipieDetail: RecipieDetail|null=null;
+export class IngredientsComponent implements OnInit {
   query: string | null = null;
   recipieDetail?: RecipieDetail;
   recipieLable: string = '';
@@ -44,15 +43,5 @@ export class RecipieDetailComponent implements OnInit {
         });
       }
     });
-  }
-
-  handleNutirents(url: string, id: any, nutrient: string) {
-    console.log('nutrients');
-    this.router.navigate([url, id, nutrient]);
-  }
-
-  handleIngredients(url: string, id: any, ingedients: string) {
-    console.log('ingedients');
-    this.router.navigate([url, id, ingedients]);
   }
 }

@@ -7,11 +7,22 @@ import { PageNotWorkingComponent } from './page-not-working/page-not-working.com
 import { FormsModule } from '@angular/forms';
 import { RecipieDetailComponent } from './recipie-detail/recipie-detail.component';
 import { HomeComponent } from './home/home.component';
+import { NutrientsComponent } from './recipie-detail/nutrients/nutrients.component';
+import { IngredientsComponent } from './recipie-detail/ingredients/ingredients.component';
+import { DetailComponent } from './recipie-detail/detail/detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'recepies', component: RecipiesComponent },
-  { path: 'recepies/:id', component: RecipieDetailComponent },
+  {
+    path: 'recepies/:id',
+    component: RecipieDetailComponent,
+    children: [
+      { path: '', component: DetailComponent },
+      { path: 'nutrients', component: NutrientsComponent },
+      { path: 'ingedients', component: IngredientsComponent },
+    ],
+  },
   { path: 'about', component: AboutUsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },

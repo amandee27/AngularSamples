@@ -11,6 +11,9 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { PageNotWorkingComponent } from './page-not-working/page-not-working.component';
 import { RecipieDetailComponent } from './recipie-detail/recipie-detail.component';
 import { HomeComponent } from './home/home.component';
+import { NutrientsComponent } from './recipie-detail/nutrients/nutrients.component';
+import { IngredientsComponent } from './recipie-detail/ingredients/ingredients.component';
+import { DetailComponent } from './recipie-detail/detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,9 @@ import { HomeComponent } from './home/home.component';
     PageNotWorkingComponent,
     RecipieDetailComponent,
     HomeComponent,
+    NutrientsComponent,
+    IngredientsComponent,
+    DetailComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule],
   providers: [],
