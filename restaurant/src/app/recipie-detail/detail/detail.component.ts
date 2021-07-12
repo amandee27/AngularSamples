@@ -18,6 +18,9 @@ export class DetailComponent implements OnInit {
   totalTime: number = 0;
   mealType: string[] = [];
   dishType: string[] = [];
+  healthLabels: string[] = [];
+  cautions: string[] = [];
+  dietLables: string[] = [];
 
   constructor(
     private _http: HttpService,
@@ -39,7 +42,10 @@ export class DetailComponent implements OnInit {
           this.totalTime = this.recipieDetail.recipe.totalTime;
           this.mealType = this.recipieDetail.recipe.mealType;
           this.dishType = this.recipieDetail.recipe.dishType;
-          console.log(this.recipieDetail.recipe.label);
+          this.healthLabels = this.recipieDetail.recipe.healthLabels;
+          this.cautions = this.recipieDetail.recipe.cautions;
+          this.dietLable = this.recipieDetail.recipe.dietLabels;
+          console.log(this.cautions);
         });
       }
     });

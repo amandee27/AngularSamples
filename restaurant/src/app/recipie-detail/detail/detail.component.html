@@ -1,44 +1,67 @@
-<div>
-  <div class="row">
+<div class="p-3">
+  <div class="row my-2">
     <div class="col">
-      <h5>Diet</h5>
+      <h6>Diet</h6>
     </div>
     <div class="col">
       <div *ngFor="let lable of dietLable">
-        <p>{{ lable }}</p>
+        <span class="item">{{ lable }}</span>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col"><h5>Calories</h5></div>
+  <div class="row my-2">
+    <div class="col"><h6>Calories</h6></div>
     <div class="col">
-      <p>{{ calories | number: ".1-2" }}</p>
+      <span class="item">{{ calories | number: ".1-2" }}</span>
     </div>
   </div>
-  <div class="row">
-    <div class="col"><h5>Total Time</h5></div>
-    <div class="col">{{ totalTime }}</div>
+  <div class="row my-2">
+    <div class="col"><h6>Total Time</h6></div>
+    <div class="col">
+      <span class="item">{{ totalTime }}</span>
+    </div>
   </div>
-  <div class="row">
-    <div class="col"><h5>Meal Type</h5></div>
+  <div class="row my-2">
+    <div class="col"><h6>Meal Type</h6></div>
     <div class="col">
       <div class="row" *ngFor="let type of mealType">
         <div class="col">
-          <p>{{ type }}</p>
+          <span class="item">{{ type }}</span>
         </div>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col"><h5>Dish Type</h5></div>
+  <div class="row my-2">
+    <div class="col"><h6>Dish Type</h6></div>
     <div class="col">
       <div class="row" *ngFor="let type of dishType">
         <div class="col">
-          <p>{{ type }}</p>
+          <span class="item">{{ type }}</span>
         </div>
       </div>
     </div>
   </div>
-  <div class="row"></div>
+  <div class="row my-2">
+    <div class="col"><h6>Cautions</h6></div>
+    <div class="col" *ngFor="let item of cautions">
+      <span class="item">{{ item }}</span>
+    </div>
+  </div>
+  <div class="row my-2">
+    <div class="col"><h6>Diet facts</h6></div>
+    <div class="col" *ngFor="let fact of dietLable">
+      <span class="item">{{ fact }}</span>
+    </div>
+  </div>
+  <div class="row my-2">
+    <div class="col"><h6>Health facts</h6></div>
+    <div class="p-3">
+      <div class="row my-2">
+        <div class="col mx-0" *ngFor="let lable of healthLabels">
+          <span class="badge badge-pill badge-secondary">{{ lable }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="row"></div>
 </div>
