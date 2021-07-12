@@ -11,13 +11,7 @@ import { RecipieDetail } from 'src/app/model/RecipieDetail';
 export class IngredientsComponent implements OnInit {
   query: string | null = null;
   recipieDetail?: RecipieDetail;
-  recipieLable: string = '';
-  recipeImage: string = '';
-  dietLable: string[] = [];
-  calories: number = 0;
-  totalTime: number = 0;
-  mealType: string[] = [];
-  dishType: string[] = [];
+  ingredientLines: string[] = [];
 
   constructor(
     private _http: HttpService,
@@ -26,20 +20,14 @@ export class IngredientsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params: ParamMap) => {
+    this.route.parent?.paramMap.subscribe((params: ParamMap) => {
       this.query = params.get('id');
       console.log(this.query);
       if (this.query !== null) {
         this._http.getRecipeDetail(this.query).subscribe((data) => {
           this.recipieDetail = data;
-          this.recipieLable = this.recipieDetail.recipe.label;
-          this.recipeImage = this.recipieDetail.recipe.image;
-          this.dietLable = this.recipieDetail.recipe.dietLabels;
-          this.calories = this.recipieDetail.recipe.calories;
-          this.totalTime = this.recipieDetail.recipe.totalTime;
-          this.mealType = this.recipieDetail.recipe.mealType;
-          this.dishType = this.recipieDetail.recipe.dishType;
-          console.log(this.recipieDetail.recipe.label);
+          this.ingredientLines = data.recipe.ingredientLines;
+          console.log(this.ingredientLines);
         });
       }
     });

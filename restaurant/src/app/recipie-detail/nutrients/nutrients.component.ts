@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { HttpService } from 'src/app/http.service';
-import { RecipieDetail } from 'src/app/model/RecipieDetail';
+import { Nutrients, RecipieDetail } from 'src/app/model/RecipieDetail';
 
 @Component({
   selector: 'app-nutrients',
@@ -11,7 +11,7 @@ import { RecipieDetail } from 'src/app/model/RecipieDetail';
 export class NutrientsComponent implements OnInit {
   query: string | null = null;
   recipieDetail?: RecipieDetail;
-  nutrients: object = {};
+  nutrients?: Nutrients;
   constructor(
     private _http: HttpService,
     private route: ActivatedRoute,
@@ -19,14 +19,14 @@ export class NutrientsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params: ParamMap) => {
+    this.route.parent?.paramMap.subscribe((params: ParamMap) => {
       this.query = params.get('id');
       console.log(this.query);
       if (this.query !== null) {
         this._http.getRecipeDetail(this.query).subscribe((data) => {
           this.recipieDetail = data;
           this.nutrients = data.recipe.totalNutrients;
-          console.log(this.recipieDetail.recipe.label);
+          console.log(data.recipe);
         });
       }
     });
