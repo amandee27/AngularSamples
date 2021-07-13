@@ -29,6 +29,7 @@ export class DetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log('Detail initialise');
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.query = params.get('id');
       console.log(this.query);
